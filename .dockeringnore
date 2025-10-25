@@ -1,0 +1,10 @@
+.idea
+notes
+p-2509-hacker-news
+venv
+.dockeringnore
+.env.example
+.env.local
+.gitignore
+Dockerfile
+README.md
