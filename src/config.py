@@ -18,8 +18,8 @@ class Config(BaseSettings):
         Transport.STREAMABLE_HTTP,
         description=f"Transport protocol, allowed: {[t.value for t in Transport]}"
     )
-    debug: bool = Field(False, alias="MCP_DEBUG", description="Enable debug logging")
-    log_level: str | None = Field(None, alias="MCP_LOG_LEVEL", description="Logging level")
+    log_level: str = Field('INFO', description="Logging level",
+                           examples=["CRITICAL", "FATAL", "ERROR", "WARNING", "INFO", "DEBUG"])
 
     MONGODB_USERNAME: str = Field(description="Mongodb user")
     MONGODB_PASSWORD: str = Field(description="Mongodb user")

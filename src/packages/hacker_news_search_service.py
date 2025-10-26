@@ -17,7 +17,6 @@ from pydantic import BaseModel, Field, field_serializer
 from pymongo import MongoClient
 
 # Configure logging
-logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 
@@ -97,7 +96,7 @@ class HackerNewsSearchService:
 
     def _run_vector_search(self, query: str, limit: int) -> List[dict]:
         """Execute vector search using embeddings. Returns only document IDs."""
-        logger.info(f"Running vector search for query: '{query}'")
+        logger.info(f"Running vector search for query: '{query}' and limit {limit}")
 
         # Generate embedding for query
         query_vector = self.embedding_service.generate_embedding(query)

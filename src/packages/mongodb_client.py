@@ -4,7 +4,6 @@ from urllib.parse import quote_plus
 from pymongo import MongoClient
 
 # Configure logging
-logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 

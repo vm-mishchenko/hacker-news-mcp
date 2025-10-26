@@ -14,7 +14,6 @@ from packages.openai_embedding_service import OpenAIEmbeddingService
 from tools.tools import HackerNewsSearchTool
 
 # Configure logging
-logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 if os.path.exists('../.env.local'):
@@ -36,73 +35,85 @@ async def app_lifespan(server: FastMCP) -> AsyncIterator[AppContext]:
 
 
 def main():
-    # Load configuration from environment variables and command-line arguments
-    config = get_config()
+    try:
+        # Load configuration from environment variables and command-line arguments
+        config = get_config()
 
-    # Create MCP server with configuration
-    mcp = FastMCP(host=config.host, port=config.port, lifespan=app_lifespan)
+        # Configure logging
+        logging.basicConfig(level=config.log_level)
 
-    # Add a dynamic greeting resource
-    @mcp.resource("greeting://{name}")
-    def get_greeting(name: str) -> str:
-        """Get a personalized greeting"""
-        return f"Hello, {name}!"
+        # Create MCP server with configuration
+        mcp = FastMCP(host=config.host, port=config.port, lifespan=app_lifespan)
 
-    # Add a prompt
-    @mcp.prompt()
-    def greet_user(name: str, style: str = "friendly") -> str:
-        """Generate a greeting prompt"""
-        styles = {
-            "friendly": "Please write a warm, friendly greeting",
-            "formal": "Please write a formal, professional greeting",
-            "casual": "Please write a casual, relaxed greeting",
-        }
-        return f"{styles.get(style, styles['friendly'])} for someone named {name}."
+        # Add a dynamic greeting resource
+        @mcp.resource("greeting://{name}")
+        def get_greeting(name: str) -> str:
+            """Get a personalized greeting"""
+            return f"Hello, {name}!"
 
-    # Create MongoDB client with hardcoded credentials
-    mongodb_client_factory = MongoDBClient(
-        username=config.MONGODB_USERNAME,
-        password=config.MONGODB_PASSWORD,
-        uri=config.MONGODB_URI,
-    )
-    mongo_client = mongodb_client_factory.get_client()
+        # Add a prompt
+        @mcp.prompt()
+        def greet_user(name: str, style: str = "friendly") -> str:
+            """Generate a greeting prompt"""
+            styles = {
+                "friendly": "Please write a warm, friendly greeting",
+                "formal": "Please write a formal, professional greeting",
+                "casual": "Please write a casual, relaxed greeting",
+            }
+            return f"{styles.get(style, styles['friendly'])} for someone named {name}."
 
-    # Create OpenAI embedding service
-    openai_embedding_service = OpenAIEmbeddingService(
-        api_key=config.OPENAI_API_KEY
-    )
+        # Create MongoDB client with hardcoded credentials
+        mongodb_client_factory = MongoDBClient(
+            username=config.MONGODB_USERNAME,
+            password=config.MONGODB_PASSWORD,
+            uri=config.MONGODB_URI,
+        )
+        mongo_client = mongodb_client_factory.get_client()
 
-    # Create Hacker News search service with embedding service
-    hacker_news_search_service = HackerNewsSearchService(
-        mongo_client=mongo_client,
-        database_name="hacker-news",
-        collection_name="posts",
-        embedding_service=openai_embedding_service
-    )
+        # Create OpenAI embedding service
+        openai_embedding_service = OpenAIEmbeddingService(
+            api_key=config.OPENAI_API_KEY
+        )
 
-    # Register tools
-    tools = [
-        HackerNewsSearchTool(hacker_news_search_service)
-    ]
+        # Create Hacker News search service with embedding service
+        hacker_news_search_service = HackerNewsSearchService(
+            mongo_client=mongo_client,
+            database_name="hacker-news",
+            collection_name="posts",
+            embedding_service=openai_embedding_service
+        )
 
-    for tool in tools:
-        mcp.add_tool(tool.execute,
-                     name=tool.name,
-                     title=tool.title,
-                     description=tool.description,
-                     annotations=tool.annotations,
-                     structured_output=getattr(tool, 'structured_output', None))
+        # Register tools
+        tools = [
+            HackerNewsSearchTool(hacker_news_search_service)
+        ]
 
-    # Run server with configured transport
-    if config.transport == Transport.STDIO:
-        print("Running server with stdio transport")
-        mcp.run(transport="stdio")
-    elif config.transport == Transport.STREAMABLE_HTTP:
-        print(
-            f"Running server with Streamable HTTP transport, address http://{config.host}:{config.port}/mcp.")
-        mcp.run(transport="streamable-http")
-    else:
-        raise ValueError(f"Unknown transport: {config.transport}")
+        for tool in tools:
+            mcp.add_tool(tool.execute,
+                         name=tool.name,
+                         title=tool.title,
+                         description=tool.description,
+                         annotations=tool.annotations,
+                         structured_output=getattr(tool, 'structured_output', None))
+
+        # Run server with configured transport
+        if config.transport == Transport.STDIO:
+            logger.info("Running server with stdio transport")
+            mcp.run(transport="stdio")
+        elif config.transport == Transport.STREAMABLE_HTTP:
+            logger.info(
+                f"Running server with Streamable HTTP transport, address http://{config.host}:{config.port}/mcp.")
+            mcp.run(transport="streamable-http")
+        else:
+            logger.error(f"Unexpected transport: {config.transport}")
+            raise ValueError(f"Unknown transport: {config.transport}")
+
+    except ConnectionError as e:
+        logger.error(f"Failed to connect to MongoDB: {e}")
+        sys.exit(1)
+    except Exception as e:
+        logger.error(f"Failed to start server: {e}", exc_info=True)
+        sys.exit(1)
 
 
 if __name__ == "__main__":
