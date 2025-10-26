@@ -23,7 +23,7 @@ async def main():
 
             # Call Hacker News search tool
             result = await session.call_tool("HackerNewsSearchTool",
-                                             arguments={"query": "and"})
+                                             arguments={"query": "mongodb"})
             print(f"Hacker News Search Results:\n{result.content}")
 
 

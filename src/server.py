@@ -10,6 +10,7 @@ from config import get_config, Transport
 from context import Resource, AppContext
 from packages.hacker_news_search_service import HackerNewsSearchService
 from packages.mongodb_client import MongoDBClient
+from packages.openai_embedding_service import OpenAIEmbeddingService
 from tools.tools import HackerNewsSearchTool
 
 # Configure logging
@@ -66,11 +67,17 @@ def main():
     )
     mongo_client = mongodb_client_factory.get_client()
 
-    # Create Hacker News search service
+    # Create OpenAI embedding service
+    openai_embedding_service = OpenAIEmbeddingService(
+        api_key=config.OPENAI_API_KEY
+    )
+
+    # Create Hacker News search service with embedding service
     hacker_news_search_service = HackerNewsSearchService(
         mongo_client=mongo_client,
         database_name="hacker-news",
-        collection_name="posts"
+        collection_name="posts",
+        embedding_service=openai_embedding_service
     )
 
     # Register tools

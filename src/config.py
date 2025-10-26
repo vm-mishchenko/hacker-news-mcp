@@ -21,10 +21,11 @@ class Config(BaseSettings):
     debug: bool = Field(False, alias="MCP_DEBUG", description="Enable debug logging")
     log_level: str | None = Field(None, alias="MCP_LOG_LEVEL", description="Logging level")
 
-    MONGODB_USERNAME: str = Field(..., description="Mongodb user")
-    MONGODB_PASSWORD: str = Field(..., description="Mongodb user")
-    MONGODB_URI: str = Field(...,
-                             description="Mongodb uri. Example: mongodb+srv://@hacker-news-assistant.wglor0l.mongodb.net/?appName=hacker-news-assistant")
+    MONGODB_USERNAME: str = Field(description="Mongodb user")
+    MONGODB_PASSWORD: str = Field(description="Mongodb user")
+    MONGODB_URI: str = Field(
+        description="Mongodb uri. Example: mongodb+srv://@hacker-news-assistant.wglor0l.mongodb.net/?appName=hacker-news-assistant")
+    OPENAI_API_KEY: str = Field(description="OpenAI API key for embedding generation")
 
     @field_validator("transport")
     def reject_sse(cls, v):
