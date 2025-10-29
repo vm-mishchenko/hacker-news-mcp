@@ -1,0 +1,962 @@
+{
+  "precision_at_k": {
+    "5": 0.720253164556962
+  },
+  "recall_at_k": {
+    "5": 0.18579465541490858
+  },
+  "ndcg_at_k": {
+    "5": 0.7201064145680748
+  },
+  "mrr": 0.8349156118143459,
+  "per_query_scores": {
+    "mongodb": {
+      "precision@5": 1.0,
+      "recall@5": 0.5555555555555556,
+      "ndcg@5": 1.0,
+      "mrr": 1.0
+    },
+    "quantum computing": {
+      "precision@5": 1.0,
+      "recall@5": 0.25,
+      "ndcg@5": 1.0,
+      "mrr": 1.0
+    },
+    "quantum vs classical data": {
+      "precision@5": 0.4,
+      "recall@5": 0.1,
+      "ndcg@5": 0.34519134224686937,
+      "mrr": 0.5
+    },
+    "news content accuracy ai": {
+      "precision@5": 0.4,
+      "recall@5": 0.1,
+      "ndcg@5": 0.27727342735504823,
+      "mrr": 0.25
+    },
+    "diagnose tesla battery problems": {
+      "precision@5": 0.4,
+      "recall@5": 0.1,
+      "ndcg@5": 0.5087403079104241,
+      "mrr": 1.0
+    },
+    "why tesla losing power": {
+      "precision@5": 0.8,
+      "recall@5": 0.2,
+      "ndcg@5": 0.6608397947263839,
+      "mrr": 0.5
+    },
+    "cookie popups": {
+      "precision@5": 0.6,
+      "recall@5": 0.15,
+      "ndcg@5": 0.639945385422766,
+      "mrr": 1.0
+    },
+    "cookie consent": {
+      "precision@5": 1.0,
+      "recall@5": 0.25,
+      "ndcg@5": 1.0,
+      "mrr": 1.0
+    },
+    "database connection error cloud": {
+      "precision@5": 0.8,
+      "recall@5": 0.2,
+      "ndcg@5": 0.8687949224876582,
+      "mrr": 1.0
+    },
+    "gutenberg": {
+      "precision@5": 0.6,
+      "recall@5": 0.75,
+      "ndcg@5": 0.8318724637288826,
+      "mrr": 1.0
+    },
+    "satellite internet options": {
+      "precision@5": 0.8,
+      "recall@5": 0.2,
+      "ndcg@5": 0.7860137352654724,
+      "mrr": 1.0
+    },
+    "choose satellite provider": {
+      "precision@5": 0.8,
+      "recall@5": 0.2,
+      "ndcg@5": 0.8687949224876582,
+      "mrr": 1.0
+    },
+    "minio alternative": {
+      "precision@5": 0.8,
+      "recall@5": 0.2,
+      "ndcg@5": 0.6608397947263839,
+      "mrr": 0.5
+    },
+    "install docker": {
+      "precision@5": 1.0,
+      "recall@5": 0.25,
+      "ndcg@5": 1.0,
+      "mrr": 1.0
+    },
+    "france president jail": {
+      "precision@5": 0.4,
+      "recall@5": 0.1,
+      "ndcg@5": 0.38356636737133565,
+      "mrr": 0.5
+    },
+    "reduce cloud cost": {
+      "precision@5": 1.0,
+      "recall@5": 0.25,
+      "ndcg@5": 1.0,
+      "mrr": 1.0
+    },
+    "heroku alternatives cheap": {
+      "precision@5": 0.8,
+      "recall@5": 0.2,
+      "ndcg@5": 0.6608397947263839,
+      "mrr": 0.5
+    },
+    "openai browser": {
+      "precision@5": 0.6,
+      "recall@5": 0.15,
+      "ndcg@5": 0.4912596920895758,
+      "mrr": 0.5
+    },
+    "build database": {
+      "precision@5": 1.0,
+      "recall@5": 0.25,
+      "ndcg@5": 1.0,
+      "mrr": 1.0
+    },
+    "what is db indexing": {
+      "precision@5": 0.6,
+      "recall@5": 0.15,
+      "ndcg@5": 0.6843515475204855,
+      "mrr": 1.0
+    },
+    "aws account hacked": {
+      "precision@5": 0.4,
+      "recall@5": 0.1,
+      "ndcg@5": 0.27727342735504823,
+      "mrr": 0.25
+    },
+    "cloud security tips": {
+      "precision@5": 0.4,
+      "recall@5": 0.1,
+      "ndcg@5": 0.48522855511632257,
+      "mrr": 1.0
+    },
+    "how to secure aws": {
+      "precision@5": 0.6,
+      "recall@5": 0.15,
+      "ndcg@5": 0.4468535299918563,
+      "mrr": 0.3333333333333333
+    },
+    "data breach prevention": {
+      "precision@5": 0.6,
+      "recall@5": 0.15,
+      "ndcg@5": 0.5147714448836774,
+      "mrr": 0.5
+    },
+    "llm brain rot": {
+      "precision@5": 0.6,
+      "recall@5": 0.15,
+      "ndcg@5": 0.6164336326286644,
+      "mrr": 1.0
+    },
+    "moon mission delays": {
+      "precision@5": 0.6,
+      "recall@5": 0.15,
+      "ndcg@5": 0.7227265726449519,
+      "mrr": 1.0
+    },
+    "NASA issues": {
+      "precision@5": 0.6,
+      "recall@5": 0.15,
+      "ndcg@5": 0.6164336326286644,
+      "mrr": 1.0
+    },
+    "llm for audio": {
+      "precision@5": 0.8,
+      "recall@5": 0.2,
+      "ndcg@5": 0.8687949224876582,
+      "mrr": 1.0
+    },
+    "food allergy prevention": {
+      "precision@5": 0.8,
+      "recall@5": 0.2,
+      "ndcg@5": 0.830419897363192,
+      "mrr": 1.0
+    },
+    "child allergy": {
+      "precision@5": 0.8,
+      "recall@5": 0.2,
+      "ndcg@5": 0.8687949224876582,
+      "mrr": 1.0
+    },
+    "video vs text": {
+      "precision@5": 0.6,
+      "recall@5": 0.15,
+      "ndcg@5": 0.7227265726449519,
+      "mrr": 1.0
+    },
+    "social media traffic drop": {
+      "precision@5": 0.8,
+      "recall@5": 0.2,
+      "ndcg@5": 0.830419897363192,
+      "mrr": 1.0
+    },
+    "aws performance": {
+      "precision@5": 0.8,
+      "recall@5": 0.2,
+      "ndcg@5": 0.8687949224876582,
+      "mrr": 1.0
+    },
+    "aws outage now": {
+      "precision@5": 1.0,
+      "recall@5": 0.25,
+      "ndcg@5": 1.0,
+      "mrr": 1.0
+    },
+    "languages comparison": {
+      "precision@5": 0.6,
+      "recall@5": 0.15,
+      "ndcg@5": 0.639945385422766,
+      "mrr": 1.0
+    },
+    "big data processing": {
+      "precision@5": 0.8,
+      "recall@5": 0.2,
+      "ndcg@5": 0.830419897363192,
+      "mrr": 1.0
+    },
+    "compare dbs": {
+      "precision@5": 0.6,
+      "recall@5": 0.15,
+      "ndcg@5": 0.6992148198508501,
+      "mrr": 1.0
+    },
+    "rag architecture": {
+      "precision@5": 0.6,
+      "recall@5": 0.15,
+      "ndcg@5": 0.7227265726449519,
+      "mrr": 1.0
+    },
+    "setup local api testing": {
+      "precision@5": 1.0,
+      "recall@5": 0.25,
+      "ndcg@5": 1.0,
+      "mrr": 1.0
+    },
+    "browser engine diff": {
+      "precision@5": 0.8,
+      "recall@5": 0.2,
+      "ndcg@5": 0.8687949224876582,
+      "mrr": 1.0
+    },
+    "how aws regions work": {
+      "precision@5": 0.8,
+      "recall@5": 0.2,
+      "ndcg@5": 0.8539316501572937,
+      "mrr": 1.0
+    },
+    "postgress slow": {
+      "precision@5": 0.8,
+      "recall@5": 0.2,
+      "ndcg@5": 0.8687949224876582,
+      "mrr": 1.0
+    },
+    "aws vs azure reliability": {
+      "precision@5": 0.6,
+      "recall@5": 0.15,
+      "ndcg@5": 0.7227265726449519,
+      "mrr": 1.0
+    },
+    "how ocr work": {
+      "precision@5": 0.6,
+      "recall@5": 0.15,
+      "ndcg@5": 0.6992148198508501,
+      "mrr": 1.0
+    },
+    "ocr accuracy": {
+      "precision@5": 0.8,
+      "recall@5": 0.2,
+      "ndcg@5": 0.8687949224876582,
+      "mrr": 1.0
+    },
+    "ocr python": {
+      "precision@5": 0.8,
+      "recall@5": 0.2,
+      "ndcg@5": 0.8539316501572937,
+      "mrr": 1.0
+    },
+    "space elevator": {
+      "precision@5": 0.6,
+      "recall@5": 0.15,
+      "ndcg@5": 0.6843515475204855,
+      "mrr": 1.0
+    },
+    "tcp vs udp": {
+      "precision@5": 0.4,
+      "recall@5": 0.1,
+      "ndcg@5": 0.3156484524795145,
+      "mrr": 0.3333333333333333
+    },
+    "linux networking": {
+      "precision@5": 0.8,
+      "recall@5": 0.2,
+      "ndcg@5": 0.6608397947263839,
+      "mrr": 0.5
+    },
+    "drugs": {
+      "precision@5": 1.0,
+      "recall@5": 0.25,
+      "ndcg@5": 1.0,
+      "mrr": 1.0
+    },
+    "raspbery pie vs ardueno": {
+      "precision@5": 1.0,
+      "recall@5": 0.25,
+      "ndcg@5": 1.0,
+      "mrr": 1.0
+    },
+    "single board pc": {
+      "precision@5": 0.8,
+      "recall@5": 0.2,
+      "ndcg@5": 0.6608397947263839,
+      "mrr": 0.5
+    },
+    "aircraft safety": {
+      "precision@5": 0.8,
+      "recall@5": 0.2,
+      "ndcg@5": 0.830419897363192,
+      "mrr": 1.0
+    },
+    "boeing vs airbus": {
+      "precision@5": 0.6,
+      "recall@5": 0.15,
+      "ndcg@5": 0.6548086577531307,
+      "mrr": 1.0
+    },
+    "flight safety": {
+      "precision@5": 0.8,
+      "recall@5": 0.2,
+      "ndcg@5": 0.8687949224876582,
+      "mrr": 1.0
+    },
+    "migrate from vmware": {
+      "precision@5": 0.6,
+      "recall@5": 0.15,
+      "ndcg@5": 0.5296347172140421,
+      "mrr": 0.5
+    },
+    "vmware alternatives": {
+      "precision@5": 0.8,
+      "recall@5": 0.2,
+      "ndcg@5": 0.6608397947263839,
+      "mrr": 0.5
+    },
+    "study tips": {
+      "precision@5": 0.8,
+      "recall@5": 0.2,
+      "ndcg@5": 0.830419897363192,
+      "mrr": 1.0
+    },
+    "time management": {
+      "precision@5": 0.4,
+      "recall@5": 0.1,
+      "ndcg@5": 0.48522855511632257,
+      "mrr": 1.0
+    },
+    "ai tools coding": {
+      "precision@5": 0.8,
+      "recall@5": 0.2,
+      "ndcg@5": 0.6608397947263839,
+      "mrr": 0.5
+    },
+    "spec driven development": {
+      "precision@5": 0.6,
+      "recall@5": 0.15,
+      "ndcg@5": 0.5147714448836774,
+      "mrr": 0.5
+    },
+    "hormone therapy": {
+      "precision@5": 0.8,
+      "recall@5": 0.2,
+      "ndcg@5": 0.6608397947263839,
+      "mrr": 0.5
+    },
+    "how hormone affects behavior": {
+      "precision@5": 0.8,
+      "recall@5": 0.2,
+      "ndcg@5": 0.8687949224876582,
+      "mrr": 1.0
+    },
+    "free programing books download": {
+      "precision@5": 0.6,
+      "recall@5": 0.15,
+      "ndcg@5": 0.5147714448836774,
+      "mrr": 0.5
+    },
+    "choose programming language": {
+      "precision@5": 0.6,
+      "recall@5": 0.15,
+      "ndcg@5": 0.639945385422766,
+      "mrr": 1.0
+    },
+    "java vs python": {
+      "precision@5": 0.8,
+      "recall@5": 0.2,
+      "ndcg@5": 0.6608397947263839,
+      "mrr": 0.5
+    },
+    "why can't focus": {
+      "precision@5": 0.6,
+      "recall@5": 0.15,
+      "ndcg@5": 0.5147714448836774,
+      "mrr": 0.5
+    },
+    "attention issues": {
+      "precision@5": 0.6,
+      "recall@5": 0.15,
+      "ndcg@5": 0.6992148198508501,
+      "mrr": 1.0
+    },
+    "attention tips": {
+      "precision@5": 0.8,
+      "recall@5": 0.2,
+      "ndcg@5": 0.8687949224876582,
+      "mrr": 1.0
+    },
+    "concentration tips": {
+      "precision@5": 0.6,
+      "recall@5": 0.15,
+      "ndcg@5": 0.6164336326286644,
+      "mrr": 1.0
+    },
+    "productivity tips": {
+      "precision@5": 0.8,
+      "recall@5": 0.2,
+      "ndcg@5": 0.8687949224876582,
+      "mrr": 1.0
+    },
+    "AI limits": {
+      "precision@5": 0.8,
+      "recall@5": 0.2,
+      "ndcg@5": 0.830419897363192,
+      "mrr": 1.0
+    },
+    "how LLMs work": {
+      "precision@5": 0.8,
+      "recall@5": 0.2,
+      "ndcg@5": 0.8687949224876582,
+      "mrr": 1.0
+    },
+    "what is ide": {
+      "precision@5": 0.6,
+      "recall@5": 0.15,
+      "ndcg@5": 0.7227265726449519,
+      "mrr": 1.0
+    },
+    "best ide": {
+      "precision@5": 0.8,
+      "recall@5": 0.2,
+      "ndcg@5": 0.6608397947263839,
+      "mrr": 0.5
+    },
+    "usa passport": {
+      "precision@5": 0.6,
+      "recall@5": 0.15,
+      "ndcg@5": 0.639945385422766,
+      "mrr": 1.0
+    },
+    "passport restrictions usa": {
+      "precision@5": 0.8,
+      "recall@5": 0.2,
+      "ndcg@5": 0.8687949224876582,
+      "mrr": 1.0
+    },
+    "check folder changes": {
+      "precision@5": 0.6,
+      "recall@5": 0.15,
+      "ndcg@5": 0.4912596920895758,
+      "mrr": 0.5
+    },
+    "home camera choose": {
+      "precision@5": 1.0,
+      "recall@5": 0.25,
+      "ndcg@5": 1.0,
+      "mrr": 1.0
+    },
+    "how auto loans work": {
+      "precision@5": 0.4,
+      "recall@5": 0.1,
+      "ndcg@5": 0.30078518014914984,
+      "mrr": 0.3333333333333333
+    },
+    "loan default risk": {
+      "precision@5": 0.6,
+      "recall@5": 0.15,
+      "ndcg@5": 0.6548086577531307,
+      "mrr": 1.0
+    },
+    "ai vs agi differences": {
+      "precision@5": 1.0,
+      "recall@5": 0.25,
+      "ndcg@5": 1.0,
+      "mrr": 1.0
+    },
+    "how agi works": {
+      "precision@5": 0.4,
+      "recall@5": 0.1,
+      "ndcg@5": 0.4703652827859579,
+      "mrr": 1.0
+    },
+    "how brain works": {
+      "precision@5": 0.6,
+      "recall@5": 0.15,
+      "ndcg@5": 0.5147714448836774,
+      "mrr": 0.5
+    },
+    "setup live stream": {
+      "precision@5": 0.6,
+      "recall@5": 0.15,
+      "ndcg@5": 0.5147714448836774,
+      "mrr": 0.5
+    },
+    "how to stream wildlife": {
+      "precision@5": 0.6,
+      "recall@5": 0.15,
+      "ndcg@5": 0.5296347172140421,
+      "mrr": 0.5
+    },
+    "stream setup": {
+      "precision@5": 0.8,
+      "recall@5": 0.2,
+      "ndcg@5": 0.830419897363192,
+      "mrr": 1.0
+    },
+    "what camera to stream outside": {
+      "precision@5": 1.0,
+      "recall@5": 0.25,
+      "ndcg@5": 1.0,
+      "mrr": 1.0
+    },
+    "server costs high": {
+      "precision@5": 0.8,
+      "recall@5": 0.2,
+      "ndcg@5": 0.7860137352654724,
+      "mrr": 1.0
+    },
+    "aws billing": {
+      "precision@5": 0.8,
+      "recall@5": 0.2,
+      "ndcg@5": 0.830419897363192,
+      "mrr": 1.0
+    },
+    "optimize cloud expenses": {
+      "precision@5": 0.8,
+      "recall@5": 0.2,
+      "ndcg@5": 0.830419897363192,
+      "mrr": 1.0
+    },
+    "deep web": {
+      "precision@5": 0.6,
+      "recall@5": 0.15,
+      "ndcg@5": 0.4468535299918563,
+      "mrr": 0.3333333333333333
+    },
+    "tor vs vpn for privacy": {
+      "precision@5": 1.0,
+      "recall@5": 0.25,
+      "ndcg@5": 1.0,
+      "mrr": 1.0
+    },
+    "secure browsing tips": {
+      "precision@5": 0.6,
+      "recall@5": 0.15,
+      "ndcg@5": 0.4912596920895758,
+      "mrr": 0.5
+    },
+    "how does ipv6 work": {
+      "precision@5": 0.4,
+      "recall@5": 0.1,
+      "ndcg@5": 0.27727342735504823,
+      "mrr": 0.25
+    },
+    "what is ab testing": {
+      "precision@5": 0.8,
+      "recall@5": 0.2,
+      "ndcg@5": 0.8687949224876582,
+      "mrr": 1.0
+    },
+    "how to implement ab test": {
+      "precision@5": 0.8,
+      "recall@5": 0.2,
+      "ndcg@5": 0.8687949224876582,
+      "mrr": 1.0
+    },
+    "Claude vs chatGPT": {
+      "precision@5": 0.8,
+      "recall@5": 0.2,
+      "ndcg@5": 0.8539316501572937,
+      "mrr": 1.0
+    },
+    "AI assistant": {
+      "precision@5": 0.8,
+      "recall@5": 0.2,
+      "ndcg@5": 0.8687949224876582,
+      "mrr": 1.0
+    },
+    "how to choose cloud": {
+      "precision@5": 0.4,
+      "recall@5": 0.1,
+      "ndcg@5": 0.38356636737133565,
+      "mrr": 0.5
+    },
+    "cloud options europe": {
+      "precision@5": 0.8,
+      "recall@5": 0.2,
+      "ndcg@5": 0.6608397947263839,
+      "mrr": 0.5
+    },
+    "switch windows to linux": {
+      "precision@5": 1.0,
+      "recall@5": 0.25,
+      "ndcg@5": 1.0,
+      "mrr": 1.0
+    },
+    "why linux over windows": {
+      "precision@5": 0.8,
+      "recall@5": 0.2,
+      "ndcg@5": 0.830419897363192,
+      "mrr": 1.0
+    },
+    "best os for devs": {
+      "precision@5": 0.4,
+      "recall@5": 0.1,
+      "ndcg@5": 0.4703652827859579,
+      "mrr": 1.0
+    },
+    "pdf reader": {
+      "precision@5": 1.0,
+      "recall@5": 0.25,
+      "ndcg@5": 1.0,
+      "mrr": 1.0
+    },
+    "syntax highlight": {
+      "precision@5": 0.8,
+      "recall@5": 0.2,
+      "ndcg@5": 0.6608397947263839,
+      "mrr": 0.5
+    },
+    "model training": {
+      "precision@5": 0.6,
+      "recall@5": 0.15,
+      "ndcg@5": 0.6164336326286644,
+      "mrr": 1.0
+    },
+    "ml framework comparison": {
+      "precision@5": 0.8,
+      "recall@5": 0.2,
+      "ndcg@5": 0.7860137352654724,
+      "mrr": 1.0
+    },
+    "debug neural network": {
+      "precision@5": 0.8,
+      "recall@5": 0.2,
+      "ndcg@5": 0.8539316501572937,
+      "mrr": 1.0
+    },
+    "deploy ml model": {
+      "precision@5": 0.6,
+      "recall@5": 0.15,
+      "ndcg@5": 0.6992148198508501,
+      "mrr": 1.0
+    },
+    "serve ml model": {
+      "precision@5": 0.6,
+      "recall@5": 0.15,
+      "ndcg@5": 0.5296347172140421,
+      "mrr": 0.5
+    },
+    "how apple m chip work": {
+      "precision@5": 0.6,
+      "recall@5": 0.15,
+      "ndcg@5": 0.4912596920895758,
+      "mrr": 0.5
+    },
+    "mac overheating": {
+      "precision@5": 0.8,
+      "recall@5": 0.2,
+      "ndcg@5": 0.7860137352654724,
+      "mrr": 1.0
+    },
+    "macbook setup": {
+      "precision@5": 0.8,
+      "recall@5": 0.2,
+      "ndcg@5": 0.6608397947263839,
+      "mrr": 0.5
+    },
+    "apple chip vs intel": {
+      "precision@5": 0.6,
+      "recall@5": 0.15,
+      "ndcg@5": 0.6548086577531307,
+      "mrr": 1.0
+    },
+    "best chip": {
+      "precision@5": 1.0,
+      "recall@5": 0.25,
+      "ndcg@5": 1.0,
+      "mrr": 1.0
+    },
+    "how ai transcription work": {
+      "precision@5": 0.8,
+      "recall@5": 0.2,
+      "ndcg@5": 0.8539316501572937,
+      "mrr": 1.0
+    },
+    "offline transcription": {
+      "precision@5": 0.4,
+      "recall@5": 0.1,
+      "ndcg@5": 0.48522855511632257,
+      "mrr": 1.0
+    },
+    "transcribe audio locally": {
+      "precision@5": 0.6,
+      "recall@5": 0.15,
+      "ndcg@5": 0.639945385422766,
+      "mrr": 1.0
+    },
+    "wind turbines": {
+      "precision@5": 0.8,
+      "recall@5": 0.2,
+      "ndcg@5": 0.8687949224876582,
+      "mrr": 1.0
+    },
+    "energy cost comparison": {
+      "precision@5": 0.4,
+      "recall@5": 0.1,
+      "ndcg@5": 0.27727342735504823,
+      "mrr": 0.25
+    },
+    "how to secure android": {
+      "precision@5": 0.8,
+      "recall@5": 0.2,
+      "ndcg@5": 0.8539316501572937,
+      "mrr": 1.0
+    },
+    "us literacy": {
+      "precision@5": 0.6,
+      "recall@5": 0.15,
+      "ndcg@5": 0.4468535299918563,
+      "mrr": 0.3333333333333333
+    },
+    "us death causes": {
+      "precision@5": 0.6,
+      "recall@5": 0.15,
+      "ndcg@5": 0.5296347172140421,
+      "mrr": 0.5
+    },
+    "news bias": {
+      "precision@5": 0.8,
+      "recall@5": 0.2,
+      "ndcg@5": 0.8539316501572937,
+      "mrr": 1.0
+    },
+    "heart disease": {
+      "precision@5": 1.0,
+      "recall@5": 0.25,
+      "ndcg@5": 1.0,
+      "mrr": 1.0
+    },
+    "ai issues prod": {
+      "precision@5": 0.8,
+      "recall@5": 0.2,
+      "ndcg@5": 0.8687949224876582,
+      "mrr": 1.0
+    },
+    "human embryo": {
+      "precision@5": 0.8,
+      "recall@5": 0.2,
+      "ndcg@5": 0.6608397947263839,
+      "mrr": 0.5
+    },
+    "chatbot bias": {
+      "precision@5": 0.4,
+      "recall@5": 0.1,
+      "ndcg@5": 0.4703652827859579,
+      "mrr": 1.0
+    },
+    "chatbot evals": {
+      "precision@5": 0.6,
+      "recall@5": 0.15,
+      "ndcg@5": 0.5147714448836774,
+      "mrr": 0.5
+    },
+    "ai hallucinations": {
+      "precision@5": 0.6,
+      "recall@5": 0.15,
+      "ndcg@5": 0.6843515475204855,
+      "mrr": 1.0
+    },
+    "troubleshoot ssl": {
+      "precision@5": 0.4,
+      "recall@5": 0.1,
+      "ndcg@5": 0.5531464700081437,
+      "mrr": 1.0
+    },
+    "set up ssl": {
+      "precision@5": 0.8,
+      "recall@5": 0.2,
+      "ndcg@5": 0.8687949224876582,
+      "mrr": 1.0
+    },
+    "set up https": {
+      "precision@5": 1.0,
+      "recall@5": 0.25,
+      "ndcg@5": 1.0,
+      "mrr": 1.0
+    },
+    "pyhton languge server": {
+      "precision@5": 0.6,
+      "recall@5": 0.15,
+      "ndcg@5": 0.6548086577531307,
+      "mrr": 1.0
+    },
+    "install kde on ubuntu": {
+      "precision@5": 0.8,
+      "recall@5": 0.2,
+      "ndcg@5": 0.7860137352654724,
+      "mrr": 1.0
+    },
+    "kde vs gnome": {
+      "precision@5": 1.0,
+      "recall@5": 0.25,
+      "ndcg@5": 1.0,
+      "mrr": 1.0
+    },
+    "gpt vs classical ml": {
+      "precision@5": 0.8,
+      "recall@5": 0.2,
+      "ndcg@5": 0.8539316501572937,
+      "mrr": 1.0
+    },
+    "ai vs classical ml": {
+      "precision@5": 0.8,
+      "recall@5": 0.2,
+      "ndcg@5": 0.830419897363192,
+      "mrr": 1.0
+    },
+    "ml vs ai": {
+      "precision@5": 0.8,
+      "recall@5": 0.2,
+      "ndcg@5": 0.830419897363192,
+      "mrr": 1.0
+    },
+    "ai programing": {
+      "precision@5": 0.8,
+      "recall@5": 0.2,
+      "ndcg@5": 0.7860137352654724,
+      "mrr": 1.0
+    },
+    "manage properties": {
+      "precision@5": 0.6,
+      "recall@5": 0.15,
+      "ndcg@5": 0.5296347172140421,
+      "mrr": 0.5
+    },
+    "rental income": {
+      "precision@5": 0.8,
+      "recall@5": 0.2,
+      "ndcg@5": 0.8539316501572937,
+      "mrr": 1.0
+    },
+    "airbnb tips": {
+      "precision@5": 1.0,
+      "recall@5": 0.25,
+      "ndcg@5": 1.0,
+      "mrr": 1.0
+    },
+    "env vars security issues": {
+      "precision@5": 1.0,
+      "recall@5": 0.25,
+      "ndcg@5": 1.0,
+      "mrr": 1.0
+    },
+    "env vars best practices": {
+      "precision@5": 0.6,
+      "recall@5": 0.15,
+      "ndcg@5": 0.6843515475204855,
+      "mrr": 1.0
+    },
+    "what is environment variable": {
+      "precision@5": 0.4,
+      "recall@5": 0.1,
+      "ndcg@5": 0.30078518014914984,
+      "mrr": 0.3333333333333333
+    },
+    "crypto exchanges diff": {
+      "precision@5": 1.0,
+      "recall@5": 0.25,
+      "ndcg@5": 1.0,
+      "mrr": 1.0
+    },
+    "android unknown apps": {
+      "precision@5": 1.0,
+      "recall@5": 0.25,
+      "ndcg@5": 1.0,
+      "mrr": 1.0
+    },
+    "android install outside playstore": {
+      "precision@5": 0.8,
+      "recall@5": 0.2,
+      "ndcg@5": 0.8687949224876582,
+      "mrr": 1.0
+    },
+    "llm price comparison": {
+      "precision@5": 0.6,
+      "recall@5": 0.15,
+      "ndcg@5": 0.6843515475204855,
+      "mrr": 1.0
+    },
+    "cheap llm": {
+      "precision@5": 0.6,
+      "recall@5": 0.15,
+      "ndcg@5": 0.6548086577531307,
+      "mrr": 1.0
+    },
+    "lightweight db options": {
+      "precision@5": 0.6,
+      "recall@5": 0.15,
+      "ndcg@5": 0.4468535299918563,
+      "mrr": 0.3333333333333333
+    },
+    "sqlite vs mysql": {
+      "precision@5": 1.0,
+      "recall@5": 0.25,
+      "ndcg@5": 1.0,
+      "mrr": 1.0
+    },
+    "coal use": {
+      "precision@5": 0.6,
+      "recall@5": 0.15,
+      "ndcg@5": 0.4468535299918563,
+      "mrr": 0.3333333333333333
+    },
+    "bonds vs stocks": {
+      "precision@5": 1.0,
+      "recall@5": 0.25,
+      "ndcg@5": 1.0,
+      "mrr": 1.0
+    },
+    "explain junk bond": {
+      "precision@5": 0.4,
+      "recall@5": 0.1,
+      "ndcg@5": 0.27727342735504823,
+      "mrr": 0.25
+    },
+    "how to hedge": {
+      "precision@5": 0.6,
+      "recall@5": 0.15,
+      "ndcg@5": 0.5147714448836774,
+      "mrr": 0.5
+    }
+  }
+}

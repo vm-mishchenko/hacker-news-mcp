@@ -1,16 +1,28 @@
+"""
+MCP tool for searching Hacker News stories.
+"""
+
 from typing import List
 
 from mcp.types import ToolAnnotations
-from pydantic import Field
+from pydantic import BaseModel, Field
 
-from packages.hacker_news_search_service import HackerNewsSearchService, HackerNewsStory
+from src.packages.search_service import HackerNewsSearchService, HackerNewsStory
+
+SEARCH_TOOL_NAME = 'search'
+
+
+class SearchResults(BaseModel):
+    """Container for search results."""
+    results: List[HackerNewsStory] = Field(description="List of matching Hacker News stories")
+    total: int = Field(description="Total number of results returned")
 
 
 class HackerNewsSearchTool():
     def __init__(self, hacker_news_search_service: HackerNewsSearchService):
-        self.name = HackerNewsSearchTool.__name__
-        self.title = 'Search Hacker News Stories'
-        self.description = 'Search for Hacker News stories using hybrid text and vector search. Results are ranked by text relevance, story popularity (vote score), and semantic similarity.'
+        self.name = SEARCH_TOOL_NAME
+        self.title = 'Search Hacker News stories'
+        self.description = 'Search Hacker News stories using hybrid text and vector search.'
         self.annotations = ToolAnnotations(title="Hacker News Search Tool")
         self.structured_output = True
         self.hacker_news_search_service = hacker_news_search_service
@@ -24,6 +36,7 @@ class HackerNewsSearchTool():
             description="Maximum number of results to return. Default is 10.",
             ge=1,
             le=100)
-    ) -> List[HackerNewsStory]:
+    ) -> SearchResults:
         """Search for Hacker News stories using hybrid text and vector search."""
-        return self.hacker_news_search_service.search(query, limit)
+        stories = self.hacker_news_search_service.search(query, limit)
+        return SearchResults(results=stories, total=len(stories))

@@ -1,3 +1,7 @@
+"""
+Configuration management for MCP server settings and command-line arguments.
+"""
+
 import argparse
 from enum import Enum
 
@@ -20,7 +24,8 @@ class Config(BaseSettings):
     )
     log_level: str = Field('INFO', description="Logging level",
                            examples=["CRITICAL", "FATAL", "ERROR", "WARNING", "INFO", "DEBUG"])
-
+    MONGODB_DATABASE_NAME: str = Field(default="hacker-news", description="MongoDB database name")
+    MONGODB_COLLECTION_NAME: str = Field(default="posts", description="MongoDB collection name")
     MONGODB_USERNAME: str = Field(description="Mongodb user")
     MONGODB_PASSWORD: str = Field(description="Mongodb user")
     MONGODB_URI: str = Field(

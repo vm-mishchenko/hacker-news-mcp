@@ -11,8 +11,8 @@ RUN pip install -r requirements.txt
 # Copy application code
 COPY . .
 
-# Set up Python environment
+# Unbuffered mode to see print statements
 ENV PYTHONUNBUFFERED=1
 
-# Command to run the server (unbuffered mode to see print statements)
+# Run MCP server
 CMD ["python", "src/server.py"]

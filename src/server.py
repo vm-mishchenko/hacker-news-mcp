@@ -1,37 +1,29 @@
+"""
+MCP server for Hacker News search functionality.
+"""
+
 import logging
-import os
-from collections.abc import AsyncIterator
-from contextlib import asynccontextmanager
+from pathlib import Path
 
 from dotenv import load_dotenv
 from mcp.server.fastmcp import FastMCP
 
-from config import get_config, Transport
-from context import Resource, AppContext
-from packages.hacker_news_search_service import HackerNewsSearchService
-from packages.mongodb_client import MongoDBClient
-from packages.openai_embedding_service import OpenAIEmbeddingService
-from tools.tools import HackerNewsSearchTool
+from src.config import get_config, Transport
+from src.packages.embedding_service import OpenAIEmbeddingService
+from src.packages.mongodb_client import MongoDBClient
+from src.packages.search_service import HackerNewsSearchService
+from src.tools.tools import HackerNewsSearchTool
 
 # Configure logging
 logger = logging.getLogger(__name__)
 
-if os.path.exists('../.env.local'):
-    load_dotenv('../.env.local')
+# Load .env.local from project root (must run from project root)
+env_local_path = Path('.env.local')
+if env_local_path.exists():
+    load_dotenv(env_local_path)
     logger.info("Loaded .env.local for local development")
 else:
     logger.info("No .env.local file found")
-
-
-@asynccontextmanager
-async def app_lifespan(server: FastMCP) -> AsyncIterator[AppContext]:
-    """Created for each new session."""
-    resource = Resource()
-
-    try:
-        yield AppContext(resource=resource)
-    finally:
-        print("Resource: Closing")
 
 
 def main():
@@ -42,7 +34,7 @@ def main():
     logging.basicConfig(level=config.log_level)
 
     # Create MCP server with configuration
-    mcp = FastMCP(host=config.host, port=config.port, lifespan=app_lifespan)
+    mcp = FastMCP(host=config.host, port=config.port)
 
     # Create MongoDB client with hardcoded credentials
     mongodb_client_factory = MongoDBClient(
@@ -57,11 +49,11 @@ def main():
         api_key=config.OPENAI_API_KEY
     )
 
-    # Create Hacker News search service with embedding service
+    # Create Hacker News search service
     hacker_news_search_service = HackerNewsSearchService(
         mongo_client=mongo_client,
-        database_name="hacker-news",
-        collection_name="posts",
+        database_name=config.MONGODB_DATABASE_NAME,
+        collection_name=config.MONGODB_COLLECTION_NAME,
         embedding_service=openai_embedding_service
     )
 

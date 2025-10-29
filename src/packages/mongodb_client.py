@@ -1,3 +1,7 @@
+"""
+MongoDB client factory for creating database connections.
+"""
+
 import logging
 from urllib.parse import quote_plus
 
@@ -21,8 +25,6 @@ class MongoDBClient:
         Construct MongoDB URI with credentials.
         Expected format: mongodb+srv://cluster.mongodb.net/?retryWrites=true&w=majority&appName=xxx
         """
-        logger.info("Building MongoDB URI with credentials")
-
         # Parse the URI to inject credentials
         if "://" not in base_uri:
             raise ValueError(
@@ -42,7 +44,6 @@ class MongoDBClient:
         # Format: mongodb+srv://username:password@cluster.mongodb.net/?params
         mongodb_uri = f"{protocol}://{encoded_username}:{encoded_password}@{rest}"
 
-        logger.info("MongoDB URI constructed successfully")
         return mongodb_uri
 
     def get_client(self) -> MongoClient:

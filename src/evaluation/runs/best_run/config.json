@@ -1,0 +1,13 @@
+{
+  "timestamp": "2025-10-31T06:04:43.271526+00:00",
+  "retriever": "mpc",
+  "retriever_config": {
+    "description": "Vector search, no full-text."
+  },
+  "metadata": {
+    "k_values": [
+      5
+    ],
+    "dataset_size": 158
+  }
+}
