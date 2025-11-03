@@ -1,6 +1,6 @@
 # Hacker News MCP Server
 
-MCP server for AI agents to search Hacker News stories.
+MCP server for AI agents to search [Hacker News stories](https://news.ycombinator.com/).
 
 **Main components**
 
