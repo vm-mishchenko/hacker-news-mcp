@@ -37,7 +37,7 @@ async def main():
 
             # Call Hacker News search tool
             query = "agentic"
-            from_time = (datetime.now(timezone.utc) - timedelta(days=30)).isoformat()
+            from_time = (datetime.now(timezone.utc) - timedelta(days=360)).isoformat()
             print(from_time)
             result = await session.call_tool(SEARCH_TOOL_NAME,
                                              arguments={

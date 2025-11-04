@@ -272,8 +272,7 @@ class HackerNewsSearchService:
                     "near": {
                         "path": "time",
                         "origin": datetime.now(timezone.utc),
-                        "pivot": 86400000,  # 1 day in milliseconds
-                        "score": {"boost": {"value": 1.5}}
+                        "pivot": 86400000  # 1 day in milliseconds - natural decay: older posts get lower scores
                     }
                 }
             ]
