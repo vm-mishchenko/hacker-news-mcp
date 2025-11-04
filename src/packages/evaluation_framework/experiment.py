@@ -25,7 +25,7 @@ def save_experiment(
     logger.info(f"Saving experiment: {exp_name}")
 
     # Create experiment directory
-    exp_dir = Path("evaluation/runs") / exp_name
+    exp_dir = Path("src/evaluation/runs") / exp_name
     exp_dir.mkdir(parents=True, exist_ok=True)
 
     # Save results as JSONL
@@ -72,7 +72,7 @@ def load_experiment(exp_name: str) -> Experiment:
     """Load experiment results, metrics, and config from disk."""
     logger.info(f"Loading experiment: {exp_name}")
 
-    exp_dir = Path("evaluation/runs") / exp_name
+    exp_dir = Path("src/evaluation/runs") / exp_name
     if not exp_dir.exists():
         raise FileNotFoundError(f"Experiment directory not found: {exp_dir}")
 

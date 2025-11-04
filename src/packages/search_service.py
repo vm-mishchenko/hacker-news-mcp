@@ -4,7 +4,7 @@ Search for Hacker News stories using hybrid text + vector search.
 
 import logging
 from datetime import datetime, timezone
-from typing import Annotated, List, Optional
+from typing import Annotated, Dict, List, Optional
 
 from pydantic import BaseModel, Field, field_serializer
 from pymongo import MongoClient
@@ -66,20 +66,78 @@ class HackerNewsSearchService:
             # Run vector search to get relevant document IDs
             vector_results = self._run_vector_search(query, limit)
             logger.info(f"Vector search returned {len(vector_results)} results")
-            return vector_results
-
-            # Extract document IDs from vector search results
-            boost_doc_ids = self._extract_doc_ids(vector_results)
-            logger.info(f"Extracted {len(boost_doc_ids)} document IDs for boosting")
 
             # Run text search with boosting for vector search results
-            boosted_results = self._run_text_search(query, boost_doc_ids, limit)
-            logger.info(f"Boosted text search returned {len(boosted_results)} results")
+            text_results = self._run_text_search(query, limit)
+            logger.info(f"Text search returned {len(text_results)} results")
 
-            return boosted_results
+            # Fuse results using Reciprocal Rank Fusion
+            fused_results = self._fusion_search_results(vector_results, text_results, limit)
+            logger.info(f"Fusion returned {len(fused_results)} results")
+
+            return fused_results
         except Exception as e:
             logger.error(f"Search error: {e}")
             return []
+
+    def _fusion_search_results(
+        self,
+        search_results_a: List[HackerNewsStory],
+        search_results_b: List[HackerNewsStory],
+        limit: int,
+        k: int = 60
+    ) -> List[HackerNewsStory]:
+        """Fuse two search result lists using Reciprocal Rank Fusion (RRF)."""
+        logger.info(f"Starting RRF fusion with k={k}, limit={limit}")
+
+        # Calculate RRF scores for all documents
+        rrf_scores: Dict[int, float] = self._calculate_rrf_scores(
+            search_results_a, search_results_b, k
+        )
+        logger.info(f"Calculated RRF scores for {len(rrf_scores)} unique documents")
+
+        # Create a map of document ID to story for quick lookup
+        doc_map: Dict[int, HackerNewsStory] = {}
+        for story in search_results_a + search_results_b:
+            if story.id not in doc_map:
+                doc_map[story.id] = story
+
+        # Sort documents by RRF score (descending) and take top limit
+        sorted_doc_ids = sorted(rrf_scores.keys(), key=lambda doc_id: rrf_scores[doc_id],
+                                reverse=True)
+        top_doc_ids = sorted_doc_ids[:limit]
+
+        # Build final result list
+        fused_results: List[HackerNewsStory] = [doc_map[doc_id] for doc_id in top_doc_ids]
+
+        logger.info(f"RRF fusion complete: returning {len(fused_results)} results")
+        return fused_results
+
+    def _calculate_rrf_scores(
+        self,
+        search_results_a: List[HackerNewsStory],
+        search_results_b: List[HackerNewsStory],
+        k: int
+    ) -> Dict[int, float]:
+        """Calculate RRF scores for documents from two ranked lists."""
+        logger.info("Calculating RRF scores")
+
+        # Map of document ID (int) to RRF score (float)
+        rrf_scores: Dict[int, float] = {}
+
+        # Process first result list
+        for rank, story in enumerate(search_results_a, start=1):
+            rrf_scores[story.id] = 1.0 / (k + rank)
+
+        # Process second result list
+        for rank, story in enumerate(search_results_b, start=1):
+            if story.id in rrf_scores:
+                rrf_scores[story.id] += 1.0 / (k + rank)
+            else:
+                rrf_scores[story.id] = 1.0 / (k + rank)
+
+        logger.info(f"RRF scores calculated for {len(rrf_scores)} documents")
+        return rrf_scores
 
     def _run_vector_search(self, query: str, limit: int) -> List[HackerNewsStory]:
         """Execute vector search using embeddings. Returns only document IDs."""
@@ -120,7 +178,7 @@ class HackerNewsSearchService:
         logger.info(f"Vector search returned {len(results)} results")
         return [HackerNewsStory(**doc) for doc in results]
 
-    def _run_text_search(self, query: str, boost_doc_ids: List[int], limit: int) -> List[
+    def _run_text_search(self, query: str, limit: int) -> List[
         HackerNewsStory]:
         """Execute text search with boosting for specific document IDs, story score, and recency.
 
@@ -138,10 +196,6 @@ class HackerNewsSearchService:
                 ],
                 "should": [
                     {"near": {"path": "time", "origin": <now>, "pivot": 86400000, "score": {"boost": {"value": 1.5}}}},
-                    {"equals": {"path": "id", "value": 123, "score": {"boost": {"value": 2.0}}}},
-                    {"equals": {"path": "id", "value": 456, "score": {"boost": {"value": 1.9}}}},
-                    {"equals": {"path": "id", "value": 789, "score": {"boost": {"value": 1.8}}}},
-                    ...
                 ]
             }
         }
@@ -149,8 +203,7 @@ class HackerNewsSearchService:
         The "must" clause ensures all results match the text query and boosts by HN vote score.
         The "should" clauses boost documents by recency and from vector search with decreasing weights.
         """
-        logger.info(
-            f"Running text search for query: '{query}' with {len(boost_doc_ids)} boost IDs")
+        logger.info(f"Running text search for query: '{query}")
         db = self.mongo_client[self.database_name]
         collection = db[self.collection_name]
 
@@ -161,6 +214,11 @@ class HackerNewsSearchService:
                     "text": {
                         "query": query,
                         "path": "title",
+                        "fuzzy": {
+                            "prefixLength": 1,
+                            "maxEdits": 2,
+                            "maxExpansions": 100
+                        },
                         "score": {
                             "boost": {
                                 "path": "score",
@@ -181,20 +239,6 @@ class HackerNewsSearchService:
                 }
             ]
         }
-
-        # Add should clauses for boosting vector search results
-        # Each subsequent result gets a slightly lower boost to reflect vector search ranking
-        if boost_doc_ids:
-            compound_clauses["should"].extend([
-                {
-                    "equals": {
-                        "path": "id",
-                        "value": doc_id,
-                        "score": {"boost": {"value": max(1.0, 2.0 - (index * 0.1))}}
-                    }
-                }
-                for index, doc_id in enumerate(boost_doc_ids)
-            ])
 
         pipeline = [
             {
@@ -217,7 +261,7 @@ class HackerNewsSearchService:
         ]
 
         results = list(collection.aggregate(pipeline))
-        logger.info(f"Boosted text search returned {len(results)} results")
+        logger.info(f"Text search returned {len(results)} results")
 
         # Convert to Pydantic models
         return [HackerNewsStory(**doc) for doc in results]

@@ -116,7 +116,7 @@ def evaluate_results(
 def has_baseline() -> bool:
     """Check if baseline experiment exists."""
     logger.info("Checking for baseline")
-    exists = Path("evaluation/runs/best_run/metrics.json").exists()
+    exists = Path("src/evaluation/runs/best_run/metrics.json").exists()
     logger.info(f"Baseline exists: {exists}")
     return exists
 
@@ -176,7 +176,7 @@ def compare_and_decide(current_exp: Experiment):
     if not has_baseline():
         logger.warning("No baseline found. Set this as baseline:")
         logger.warning(
-            f"   cp -r evaluation/runs/{current_exp.config.name} evaluation/runs/best_run")
+            f"   cp -r src/evaluation/runs/{current_exp.config.name} src/evaluation/runs/best_run")
         return
 
     # Load baseline experiment
@@ -242,7 +242,7 @@ def run():
     # Save (only if --save flag is passed)
     if args.save:
         save_experiment(exp_name, results_dataset, current_metrics, current_config)
-        logger.info(f"Saved to: evaluation/runs/{exp_name}/")
+        logger.info(f"Saved to: src/evaluation/runs/{exp_name}/")
     else:
         logger.info("Skipping save (use --save to save results)")
 

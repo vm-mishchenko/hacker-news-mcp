@@ -21,7 +21,7 @@ PROD_MCP = "https://hacker-news-mcp-632359460921.us-central1.run.app/mcp"
 
 async def main():
     # Connect to the server using Streamable HTTP
-    async with streamablehttp_client(PROD_MCP) as (
+    async with streamablehttp_client(LOCAL_MCP) as (
             read_stream,
             write_stream,
             get_session_id,
