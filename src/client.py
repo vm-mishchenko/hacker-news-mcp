@@ -1,11 +1,10 @@
 """
 Example client for testing the Hacker News MCP server.
 """
-
 import asyncio
 import json
 import logging
-from datetime import datetime
+from datetime import datetime, timezone, timedelta
 
 from mcp import ClientSession
 from mcp.client.streamable_http import streamablehttp_client
@@ -37,9 +36,15 @@ async def main():
                 logger.info(f"  - {tool.name}: {tool.description}")
 
             # Call Hacker News search tool
-            query = "mongodb"
+            query = "agentic"
+            from_time = (datetime.now(timezone.utc) - timedelta(days=30)).isoformat()
+            print(from_time)
             result = await session.call_tool(SEARCH_TOOL_NAME,
-                                             arguments={"query": query, "limit": 10})
+                                             arguments={
+                                                 "query": query,
+                                                 "limit": 10,
+                                                 "from_time": from_time
+                                             })
 
             # Format and log results in human-readable format
             logger.info(f"Search: {query}\n")
@@ -53,7 +58,7 @@ async def main():
 
                 logger.info(f"Found {total} results:\n")
                 for idx, story in enumerate(stories):
-                    formatted_time = datetime.fromisoformat(story['time']).strftime('%Y-%m')
+                    formatted_time = datetime.fromisoformat(story['time']).strftime('%Y-%m-%d')
                     logger.info(
                         f"{idx}. {story['title']}, ID: {story['id']}, Score: {story['score']}, Time: {formatted_time}")
 

@@ -2,7 +2,8 @@
 MCP tool for searching Hacker News stories.
 """
 
-from typing import List
+from datetime import datetime
+from typing import List, Optional
 
 from mcp.types import ToolAnnotations
 from pydantic import BaseModel, Field
@@ -35,8 +36,14 @@ class HackerNewsSearchTool():
             default=10,
             description="Maximum number of results to return. Default is 10.",
             ge=1,
-            le=100)
+            le=100),
+        from_time: Optional[datetime] = Field(
+            default=None,
+            description="Start of the time window for filtering stories. Only stories submitted on or after this time will be included. Example: '2024-01-01T00:00:00Z'"),
+        to_time: Optional[datetime] = Field(
+            default=None,
+            description="End of the time window for filtering stories. Only stories submitted on or before this time will be included. Example: '2024-12-31T23:59:59Z'")
     ) -> SearchResults:
         """Search for Hacker News stories using hybrid text and vector search."""
-        stories = self.hacker_news_search_service.search(query, limit)
+        stories = self.hacker_news_search_service.search(query, limit, from_time, to_time)
         return SearchResults(results=stories, total=len(stories))
